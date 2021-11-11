@@ -1,0 +1,36 @@
+<html>
+
+<body>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-elem">
+            <div>Veuillez saisir votre nom d'utilisateur :</div>
+            <input type="text" id="username" name="username" />
+        </div>
+        <div class="form-elem">
+            <div>Veuillez saisir votre adresse e-mail :</div>
+            <input type="text" id="email" name="email" />
+        </div>
+        <div class="form-elem">
+            <div>Choisissez votre mot de passe :</div>
+            <input type="password" name="password1" />
+        </div>
+        <div class="form-elem">
+            <div>Confirmez votre mot de passe :</div>
+            <input type="password" name="password2" />
+        </div>
+
+        {% if error %}
+        <small style="color: red;">
+            {{ error }}
+        </small>
+        {% endif %}
+
+        <div class="form-elem">
+            <input class="valForm" type="submit" value="valider" />
+        </div>
+    </form>
+</body>
+
+</html>
