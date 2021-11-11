@@ -33,6 +33,7 @@ class Command(BaseCommand):
 
             for cat_name in category_list:
                 categories.append(Category.objects.get_or_create(name=cat_name))
+            breakpoint()
             product = Product(
                 name=product["product_name_fr"],
                 stores=product["stores"],

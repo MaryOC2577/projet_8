@@ -3,7 +3,7 @@ from login.models import User
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=36, unique=True)
+    name = models.CharField(max_length=400, unique=True)
 
 
 class Product(models.Model):
