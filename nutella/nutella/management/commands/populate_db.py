@@ -32,26 +32,31 @@ class Command(BaseCommand):
             product = product_list["products"]
 
             for cat_name in category_list:
-                categories.append(Category.objects.get_or_create(name=cat_name))
-            breakpoint()
+                cat = Category.objects.get_or_create(name=cat_name)[0]
+                cat.save()
+                categories.append(cat)
+
             product = Product(
-                name=product["product_name_fr"],
-                stores=product["stores"],
-                nutriscore=product["nutrition_grade_fr"],
-                url=product["url"],
-                categories=categories,
+                name=product_data["product_name_fr"],
+                stores=product_data["stores"],
+                nutriscore=product_data["nutrition_grade_fr"],
+                url=product_data["url"],
             )
+
+            product.save()
+            product.categories.add(*[cat.id for cat in categories])
+            product.save()
 
             print(
                 "Nom du produit : ",
-                product["product_name_fr"],
+                product_data["product_name_fr"],
                 "\nCatégories : ",
-                product["categories"],
+                product_data["categories"],
                 "\nMagasins :",
-                product["stores"],
+                product_data["stores"],
                 "\nNutriscore : ",
-                product["nutrition_grade_fr"],
+                product_data["nutrition_grade_fr"],
                 "\nUrl : ",
-                product["url"],
+                product_data["url"],
                 "\n",
             )
