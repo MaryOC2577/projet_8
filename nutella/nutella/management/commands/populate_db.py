@@ -30,7 +30,7 @@ class Command(BaseCommand):
             product = product_list["products"]
 
             for cat_name in category_list:
-                cat = Category.objects.get_or_create(name=cat_name)[0]
+                cat = Category.objects.get_or_create(name=cat_name)[0]r
                 cat.save()
                 categories.append(cat)
 
