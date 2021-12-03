@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<!--
-    Afficher le nom du produit recherché par l'utilisateur.
-    Afficher les substituts
--->
+{% for product in products %}
+<p>
+<ul>
+    <li>{{product.name}}</li>
+    <li>{{product.url}}</li>
+</ul>
+</p>
+{% endfor %}
 {% endblock %}

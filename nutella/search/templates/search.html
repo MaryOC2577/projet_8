@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<form>
-    <input type="search">
+<form method="get" action="{% url 'result' %}">
+
+    <input type="search" name="expression">
     <input type="submit" value="Rechercher">
 </form>
 {% endblock %}
