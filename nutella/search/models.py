@@ -4,6 +4,5 @@ from nutella.models import Product, Category
 
 
 class SearchProduct(ListView):
-    paginate_by = 10
     model = Product
     context_object_name = "products"

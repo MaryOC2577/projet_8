@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<p>
+    Produit sélectionné :{{product.name}}<br />
+    Nutriscore :{{product.nutriscore}}<br />
+    Vor sur OpenFoodFacts : {{product.url}}
+</p>
+{% endblock %}
