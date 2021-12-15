@@ -30,7 +30,7 @@ class Command(BaseCommand):
             product = product_list["products"]
 
             for cat_name in category_list:
-                cat = Category.objects.get_or_create(name=cat_name)[0]r
+                cat = Category.objects.get_or_create(name=cat_name)[0]
                 cat.save()
                 categories.append(cat)
 
@@ -42,6 +42,8 @@ class Command(BaseCommand):
                 stores=product_data["stores"],
                 nutriscore=product_data["nutrition_grade_fr"],
                 url=product_data["url"],
+                image=product_data["image_url"],
+                nutrition=product_data["image_nutrition_url"],
             )
 
             product.save()

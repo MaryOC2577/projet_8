@@ -4,18 +4,16 @@
 {% for product in page_obj %}
 <p>
 <ul>
-    <li>{{product.name}}</li>
-    <li>{{product.url}}</li>
+    <li><img src="{{product.image}}" width="10%" height="10%"><br />{{product.name}}</li>
 </ul>
 </p>
 {% endfor %}
 
-
 <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
-        <a href="?page=1">&laquo; first</a>
-        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        <a href="?page=1&expression={{ expression }}">&laquo; first</a>
+        <a href="?page={{ page_obj.previous_page_number }}&expression={{ expression }}">previous</a>
         {% endif %}
 
         <span class="current">
@@ -23,8 +21,8 @@
         </span>
 
         {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">next</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        <a href="?page={{ page_obj.next_page_number }}&expression={{ expression }}">next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}&expression={{ expression }}">last &raquo;</a>
         {% endif %}
     </span>
 </div>

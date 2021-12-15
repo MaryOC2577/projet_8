@@ -11,6 +11,8 @@ class Product(models.Model):
     stores = models.CharField(max_length=200)
     nutriscore = models.CharField(max_length=1)
     url = models.CharField(max_length=300)
+    image = models.URLField(default="")
+    nutrition = models.URLField(default="")
     categories = models.ManyToManyField(Category)
 
 
