@@ -3,8 +3,11 @@
 {% block head %}
 
 <p>
+    {{product.immage}}
     Produit sélectionné :{{product.name}}<br />
     Nutriscore :{{product.nutriscore}}<br />
-    Vor sur OpenFoodFacts : {{product.url}}
+    Repères nutritionnels pour 100g :<br />
+    {{product.nutrition}}<br />
+    Voir sur OpenFoodFacts : {{product.url}}
 </p>
 {% endblock %}

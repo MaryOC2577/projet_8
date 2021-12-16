@@ -25,6 +25,11 @@ class OneProduct(ListView):
     model = Product
     context_object_name = "product"
 
+    def get_queryset(self):
+        product_id = self.request.GET.get("id", "")
+        print("product id :", product_id)
+        return Product.objects.filter(id=product_id) if product_id else []
+
 
 class SearchView(View):
     def get(self, request):

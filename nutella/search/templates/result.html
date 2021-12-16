@@ -4,7 +4,7 @@
 {% for product in page_obj %}
 <p>
 <ul>
-    <li><img src="{{product.image}}" width="10%" height="10%"><br />{{product.name}}</li>
+    <li><a href="{% url 'oneproduct' %}">{{product.name}}</a></li>
 </ul>
 </p>
 {% endfor %}
