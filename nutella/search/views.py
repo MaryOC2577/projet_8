@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from django.views.generic import View, ListView
+from django.shortcuts import get_object_or_404, render, redirect
+from django.views.generic import View, ListView, DetailView
 from nutella.models import Product, Category
 
 
@@ -20,15 +20,11 @@ class ProductResult(ListView):
         return super().get_context_data(**kwargs)
 
 
-class OneProduct(ListView):
+class OneProduct(DetailView):
     template_name = "product.html"
+
     model = Product
     context_object_name = "product"
-
-    def get_queryset(self):
-        product_id = self.request.GET.get("id", "")
-        print("product id :", product_id)
-        return Product.objects.filter(id=product_id) if product_id else []
 
 
 class SearchView(View):

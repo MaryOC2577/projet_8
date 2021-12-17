@@ -4,7 +4,7 @@
 {% for product in page_obj %}
 <p>
 <ul>
-    <li><a href="{% url 'oneproduct' %}">{{product.name}}</a></li>
+    <li><a href="{% url 'oneproduct' product.id %}">{{product.name}}</a></li>
 </ul>
 </p>
 {% endfor %}

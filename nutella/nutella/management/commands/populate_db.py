@@ -15,7 +15,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         category_name = options["category"]
         response = requests.get(
-            f"https://fr.openfoodfacts.org/cgi/search.pl?search_terms={category_name}&search_simple=1&action=process&json=1&page=1&page_size=20"
+            f"https://fr.openfoodfacts.org/cgi/search.pl?search_terms={category_name}&search_simple=1&action=process&json=1&page=1&page_size=200"
         )
 
         product_list = []
