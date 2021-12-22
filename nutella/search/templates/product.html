@@ -4,14 +4,30 @@
 
 
 <p>
-    <img src="{{product.image}}">
-    Produit sélectionné :{{product.name}}<br />
-    Nutriscore :{{product.nutriscore}}<br />
-    Repères nutritionnels pour 100g :<br />
-    <img src="{{product.nutrition}}" width="150" height="150"><br />
-    Voir sur <a href="{{product.url}}">OpenFoodFacts</a>
+    <img src="{{product.image}}"><br />
+    {{product.name}}<br />
+</p>
+<p>
+<table align="center">
+    <tr>
+        <td>
+            Nutriscore :{{product.nutriscore}}
+        </td>
+        <td>
+            Repères nutritionnels pour 100g :<br />
+            <img src="{{product.nutrition}}">
+        </td>
+    </tr>
+</table>
+Voir sur <a href="{{product.url}}">OpenFoodFacts</a>
 </p>
 {% for substitute in product.get_six_better_substitutes %}
 <img src="{{substitute.image}}">
 {% endfor %}
+{% endblock %}
+
+{% block history %}
+{% endblock %}
+
+{% block contact %}
 {% endblock %}

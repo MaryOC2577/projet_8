@@ -11392,6 +11392,12 @@ header.masthead {
 header.masthead h1, header.masthead .h1 {
   font-size: 2.25rem;
 }
+
+header.masthead img {
+  max-width: 20%;
+  max-height: 20%;
+}
+
 @media (min-width: 992px) {
   header.masthead {
     height: 100vh;

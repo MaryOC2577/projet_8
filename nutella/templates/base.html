@@ -61,7 +61,7 @@
         </div>
         {% endblock %}
     </header>
-
+    {% block history %}
     <!-- About-->
     <section class="page-section bg-primary" id="about">
         <div class="container px-4 px-lg-5">
@@ -87,7 +87,9 @@
                 </div>
             </div>
         </div>
+        {% endblock %}
     </section>
+    {% block contact %}
     <!-- Services-->
     <section class="page-section" id="contact">
         <div class="container px-4 px-lg-5">
@@ -112,6 +114,7 @@
             </div>
         </div>
     </section>
+    {% endblock %}
 
     <!-- Footer-->
     <footer class="bg-light py-5">
