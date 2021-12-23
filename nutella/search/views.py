@@ -10,7 +10,7 @@ class ProductResult(ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        expression = self.request.GET.get("expression", "")
+        expression = self.request.GET.get("expression", "").title()
         print("expression :", expression)
         return Product.objects.filter(name__contains=expression) if expression else []
 

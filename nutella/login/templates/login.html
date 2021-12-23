@@ -27,14 +27,19 @@
 </form>
 
 
+
 {% else %}
 <button class="logBtn logBtn__logout">
     <a href="{% url 'logout' %}">Logout</a>
 </button>
 {% endif %} {% if user.is_authenticated %}
-<p class="welcome">Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+<p class="welcome">Bienvenue, {{ user.get_username }}. Merci de vous être connecté(e).</p>
 {% else %}
-<p class="welcome">Welcome, new user. Please log in.</p>
+<p class="welcome">Bienvenue, connectez-vous.</p>
 {% endif %}
+
+<p>
+    Pas de compte ? Vous pouvez en créer un <a href="{% url 'registration' %}">ici</a> !
+</p>
 
 {% endblock %}

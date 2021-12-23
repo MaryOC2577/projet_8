@@ -11398,6 +11398,17 @@ header.masthead img {
   max-height: 20%;
 }
 
+.infoprod {
+  text-align: center;
+  margin: auto;
+  vertical-align: top;
+  
+}
+
+.theproduct {
+  background-color: orange;
+}
+
 @media (min-width: 992px) {
   header.masthead {
     height: 100vh;

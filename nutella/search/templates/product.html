@@ -3,22 +3,24 @@
 {% block head %}
 
 
-<p>
+<p class="theproduct">
     <img src="{{product.image}}"><br />
     {{product.name}}<br />
 </p>
 <p>
-<table align="center">
+<table class="infoprod">
     <tr>
         <td>
-            Nutriscore :{{product.nutriscore}}
+            Nutriscore <br>
+            {{product.nutriscore}}
         </td>
         <td>
-            Repères nutritionnels pour 100g :<br />
-            <img src="{{product.nutrition}}">
+            Repères nutritionnels pour 100g <br>
+            <a href="{{product.nutrition}}"><img src="{{product.nutrition}}"></a>
         </td>
     </tr>
 </table>
+<br>
 Voir sur <a href="{{product.url}}">OpenFoodFacts</a>
 </p>
 {% for substitute in product.get_six_better_substitutes %}

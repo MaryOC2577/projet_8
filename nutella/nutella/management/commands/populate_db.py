@@ -15,7 +15,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         category_name = options["category"]
         response = requests.get(
-            f"https://fr.openfoodfacts.org/cgi/search.pl?search_terms={category_name}&search_simple=1&action=process&json=1&page=1&page_size=200"
+            f"https://fr.openfoodfacts.org/cgi/search.pl?search_terms={category_name}&search_simple=1&action=process&json=1&page=1&page_size=2000"
         )
 
         product_list = []
@@ -37,10 +37,14 @@ class Command(BaseCommand):
             if not product_data["categories_lc"] == "fr":
                 continue
 
+            # for product in products:
+            #     if product["name"] == product_data["product_name_fr"]:
+            #         continue
+            #     else:
             product = Product(
                 name=product_data["product_name_fr"],
                 stores=product_data["stores"],
-                nutriscore=product_data["nutrition_grade_fr"],
+                nutriscore=(product_data["nutrition_grade_fr"]).upper(),
                 url=product_data["url"],
                 image=product_data["image_url"],
                 nutrition=product_data["image_nutrition_url"],
