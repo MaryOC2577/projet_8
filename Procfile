@@ -1,1 +1,1 @@
-web: gunicorn nutella.wsgi
+web: gunicorn nutella/nutella.wsgi
