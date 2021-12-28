@@ -5,8 +5,8 @@ from login.models import User
 class Category(models.Model):
     name = models.CharField(max_length=400, unique=True)
 
-    def get_pk_category_by_name(self, cat_name):
-        return Category.objects.get(name=cat_name)
+    # def get_pk_category_by_name(self, cat_name):
+    #     return Category.objects.get(name=cat_name)
 
 
 class Product(models.Model):
@@ -18,7 +18,7 @@ class Product(models.Model):
     nutrition = models.URLField(default="")
     categories = models.ManyToManyField(Category)
 
-    def get_six_better_substitutes(self):
+    def get_six_better_substitutes(self, catname):
         # return [
         #     Product.objects.get(pk=155),
         #     Product.objects.get(pk=154),
@@ -27,14 +27,19 @@ class Product(models.Model):
         #     Product.objects.get(pk=151),
         #     Product.objects.get(pk=150),
         # ]
-        id_categories = []
-        catname = "pizza"
+        # id_categories = []
 
-        id_categories = Category.objects.get(
-            pk=Category.get_pk_category_by_name(catname)
-        )
+        # catname = "pizza"
 
-        return Product.objects.get(categories=id_categories)
+        # id_categories = Category.objects.get(
+        #     pk=Category.get_pk_category_by_name(catname)
+        # )
+        # for category in self.categories:
+        #     len(category.products)
+        # # Product.objects.get(categories=id_categories).order_by(nutriscore)
+
+        # return Product.objects.filter(categories__id=id_categories).order_by("nutriscore")[:5]
+        pass
 
 
 class Favorite(models.Model):

@@ -3,9 +3,13 @@
 {% block head %}
 
 
-<p class="theproduct">
-    <img src="{{product.image}}"><br />
-    {{product.name}}<br />
+<p>
+<table class="theproduct">
+    <tr>
+        <td><img src="{{product.image}}"></td>
+        <td>{{product.name}}</td>
+    </tr>
+</table>
 </p>
 <p>
 <table class="infoprod">
@@ -23,9 +27,7 @@
 <br>
 Voir sur <a href="{{product.url}}">OpenFoodFacts</a>
 </p>
-{% for substitute in product.get_six_better_substitutes %}
-<img src="{{substitute.image}}">
-{% endfor %}
+
 {% endblock %}
 
 {% block history %}
