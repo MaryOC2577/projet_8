@@ -7,7 +7,7 @@ class ProductResult(ListView):
     template_name = "result.html"
     model = Product
     context_object_name = "products"
-    paginate_by = 8
+    paginate_by = 5
 
     def get_queryset(self):
         expression = self.request.GET.get("expression", "").title()
@@ -25,6 +25,13 @@ class OneProduct(DetailView):
 
     model = Product
     context_object_name = "product"
+
+
+class Substitutes(ListView):
+    template_name = "substitutes.html"
+
+    model = Product
+    context_object_name = "products"
 
 
 class SearchView(View):

@@ -1,4 +1,6 @@
 from django.db import models
+from django.shortcuts import get_object_or_404
+from django.db.models import Q
 from login.models import User
 
 
@@ -18,7 +20,7 @@ class Product(models.Model):
     nutrition = models.URLField(default="")
     categories = models.ManyToManyField(Category)
 
-    def get_six_better_substitutes(self, catname):
+    def get_six_better_substitutes(self, product):
         # return [
         #     Product.objects.get(pk=155),
         #     Product.objects.get(pk=154),
@@ -39,7 +41,22 @@ class Product(models.Model):
         # # Product.objects.get(categories=id_categories).order_by(nutriscore)
 
         # return Product.objects.filter(categories__id=id_categories).order_by("nutriscore")[:5]
-        pass
+
+        # récupérer le produit choisit par l'utilisateur
+        current_product = get_object_or_404(Product, product=product)
+        # récupérer le nutriscore du produit choisit par l'utilisateur
+        grade = current_product.nutriscore
+        # retourner les 6 produits avec le meilleur nutriscore possible
+        six_better_products = (
+            Product.objects.filter(category=current_product.categories)
+            .filter(Q(nutriscore=grade))
+            .order_by("nutriscore")[:5]
+        )
+        for element in six_better_products:
+            print("test :", element.name)
+        else:
+            print("Pas de substitut disponile.")
+        return six_better_products
 
 
 class Favorite(models.Model):

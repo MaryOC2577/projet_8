@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'subsitutes.html' %}
 
 {% block head %}
 
@@ -26,7 +26,11 @@
 </table>
 <br>
 Voir sur <a href="{{product.url}}">OpenFoodFacts</a>
+<a href="{% url 'substitutes' product.id %}">Voir les substituts</a>
 </p>
+
+
+
 
 {% endblock %}
 
