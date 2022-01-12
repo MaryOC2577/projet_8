@@ -26,6 +26,10 @@ class OneProduct(DetailView):
     model = Product
     context_object_name = "product"
 
+    def get_context_data(self, **kwargs):
+        kwargs["substitutes"] = self.get_object().get_six_better_substitutes()
+        return super().get_context_data(**kwargs)
+
 
 class Substitutes(ListView):
     template_name = "substitutes.html"

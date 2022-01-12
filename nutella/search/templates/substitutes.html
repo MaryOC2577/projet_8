@@ -1,12 +1,12 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
-{% block history %}
+{% block head %}
 <p>
     Substituts disponibles :
 </p>
-{% for product in products %}
+{% for product in substitutes %}
 <p>
-    {{product.image}} <br>
+    <img src="{{product.image}}"> <br>
     {{product.name}} <br>
     {{product.nutriscore}}
 </p>

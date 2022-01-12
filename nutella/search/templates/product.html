@@ -1,4 +1,4 @@
-{% extends 'subsitutes.html' %}
+{% extends 'base.html' %}
 
 {% block head %}
 
@@ -26,10 +26,24 @@
 </table>
 <br>
 Voir sur <a href="{{product.url}}">OpenFoodFacts</a>
-<a href="{% url 'substitutes' product.id %}">Voir les substituts</a>
+
 </p>
 
+{% for product in substitutes %}
+<p>
+<table>
+    <tr>
+        <td>
+            <img src="{{product.image}}"> <br>
+            {{product.name}} <br>
+            {{product.nutriscore}}
+        </td>
 
+    </tr>
+</table>
+
+</p>
+{% endfor %}
 
 
 {% endblock %}
