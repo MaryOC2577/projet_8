@@ -36,7 +36,8 @@ Voir sur <a href="{{product.url}}">OpenFoodFacts</a>
         <td>
             <img src="{{product.image}}"> <br>
             {{product.name}} <br>
-            {{product.nutriscore}}
+            {{product.nutriscore}}<br>
+            <a href="{% url 'favorite' product.id %}?next=/search/oneproduct/{{product.id}}">Sauvegarder</a>
         </td>
 
     </tr>

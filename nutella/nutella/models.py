@@ -32,7 +32,7 @@ class Product(models.Model):
         for element in six_better_products:
             print("test :", element.name)
         else:
-            print("Pas de substitut disponile.")
+            print("Pas de substitut disponible.")
         return six_better_products
 
 

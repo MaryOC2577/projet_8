@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import View, ListView, DetailView
-from nutella.models import Product, Category
+from nutella.models import Product, Category, Favorite
 
 
 class ProductResult(ListView):
@@ -41,3 +41,9 @@ class Substitutes(ListView):
 class SearchView(View):
     def get(self, request):
         return render(request, "search.html")
+
+
+class SaveFavorites(View):
+    def get(self, request, pk):
+
+        return redirect(request.GET["next"])
