@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.views.generic import View, ListView, DetailView
+from django.views.generic import View, ListView, DetailView, CreateView
 from nutella.models import Product, Category, Favorite
 
 
@@ -28,6 +28,7 @@ class OneProduct(DetailView):
 
     def get_context_data(self, **kwargs):
         kwargs["substitutes"] = self.get_object().get_six_better_substitutes()
+        self.request.session["product_id"] = self.get_object().id
         return super().get_context_data(**kwargs)
 
 
@@ -46,4 +47,7 @@ class SearchView(View):
 class SaveFavorites(View):
     def get(self, request, pk):
 
-        return redirect(request.GET["next"])
+        favsave = Favorite(product=Product.objects.get(pk=pk), user=request.user)
+        favsave.save()
+        print("test request get", request.GET)
+        return redirect("oneproduct", self.request.session["product_id"])

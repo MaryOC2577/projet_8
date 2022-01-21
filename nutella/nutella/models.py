@@ -19,6 +19,10 @@ class Product(models.Model):
 
     def get_six_better_substitutes(self):
 
+        unavaillable_substitutes = list(
+            set([favorite.product.id for favorite in Favorite.objects.all()])
+        )
+
         # récupérer le nutriscore du produit choisit par l'utilisateur
         grade = self.nutriscore
         # retourner les 6 produits avec le meilleur nutriscore possible
@@ -27,6 +31,7 @@ class Product(models.Model):
                 categories=[category.id for category in self.categories.all()][0]
             )
             .filter(Q(nutriscore=grade))
+            .exclude(id__in=unavaillable_substitutes)
             .order_by("nutriscore")[:5]
         )
         for element in six_better_products:
