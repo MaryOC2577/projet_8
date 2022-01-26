@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% for favorite in favorites %}
+<p>
+    favorite.date<br>
+    favorite.user<br>
+    favorite.product
+</p>
+{% endblock %}

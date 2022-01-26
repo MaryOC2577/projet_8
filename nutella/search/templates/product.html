@@ -36,12 +36,16 @@ Voir sur <a href="{{product.url}}">OpenFoodFacts</a>
         <td>
 
             <form method="GET" action={% url 'favorite' product.id %}>
-                {% csrf_token %}
-                <img src="{{product.image}}"> <br>
-                {{product.name}} <br>
-                {{product.nutriscore}}<br>
+                <div class="box">
+                    {% csrf_token %}
+                    <div>
+                        <img src="{{product.image}}"><br>
+                        {{product.name}}
+                        {{product.nutriscore}}<br>
+                        <input type="submit" value="SAUVEGARDER">
+                    </div>
 
-                <input type="submit" value="SAUVEGARDER">
+                </div>
             </form>
         </td>
 

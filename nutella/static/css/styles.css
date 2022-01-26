@@ -11415,6 +11415,19 @@ header.masthead table {
   border-radius: 10px;
 }
 
+.box {
+  display: flex;
+  flex: col;
+  
+  align-items: center;
+  
+}
+
+.box.div.img {
+  max-width: 20%;
+  max-height: 20%;
+}
+
 .infoprod {
   text-align: center;
   margin: auto;
