@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% for favorite in favorites %}
+<p>
+<form method="GET" action="{% url 'favorites' favorite.id %}"></form>
+<a href="{% url 'oneproduct' favorite.product.id %}"> {{favorite.product.name}}</a>
+<input type="submit" value="SUPPRIMER">
+</form>
+</p>
+{% endfor %}
+{% endblock %}

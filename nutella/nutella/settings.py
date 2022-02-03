@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "login",
     "nutella",
     "search",
+    "favorite",
 ]
 
 MIDDLEWARE = [

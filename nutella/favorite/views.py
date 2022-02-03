@@ -1,22 +1,24 @@
-from msilib.schema import ListView
+from django.views import View
+from django.views.generic import ListView
 from django.shortcuts import render, redirect
 from nutella.models import Favorite
 from login.models import User
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class ShowFavorites(ListView):
-    template_name = "favorites.html"
+class ShowFavorites(LoginRequiredMixin, ListView):
+    template_name = "favorite/favorites.html"
     model = Favorite
     context_object_name = "favorites"
 
-    user = User()
+    def get_queryset(self):
+        return Favorite.objects.filter(user__pk=self.request.user.id)
 
-    if user.is_authenticated == False:
-        messages.add_message(
-            messages.SUCCESS, "Vous devez être connecté pour consulter la page favoris."
-        )
-        redirect("login")
 
-    def delete_favorite(self, id):
-        pass
+class DeleteFavorites(View):
+    def post(self, request, favorite_id):
+        favorite = Favorite.objects.get(pk=favorite_id)
+        if self.request.user.id == favorite.user.id:
+            favorite.delete()
+        return redirect("myfavorites")
