@@ -27,4 +27,4 @@ RUN adduser -D myuser
 USER myuser
 
 # run gunicorn
-CMD gunicorn nutella.wsgi:application --bind 0.0.0.0:$PORT
+CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:8000", "wsgi:nutella"]
