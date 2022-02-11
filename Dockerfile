@@ -2,7 +2,7 @@
 FROM python:3.10-alpine
 
 # set work directory
-WORKDIR /nutella
+WORKDIR /app
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -27,4 +27,6 @@ RUN adduser -D myuser
 USER myuser
 
 # run gunicorn
-CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:8000", "wsgi:nutella"]
+# CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:8000", "/nutella/wsgi", "--reload"]
+EXPOSE 8000
+CMD gunicorn nutella.wsgi:application --bind 0.0.0.0:8000
